@@ -5,3 +5,7 @@
 .unskew{
     transform: skewX(-30deg);
 }
+
+.btn{
+    padding:0;
+}
