@@ -1,0 +1,130 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+
+        <title>Gate</title>
+        <link rel="icon" type="image/x-icon" href="images/favicon.jpg">
+
+        <!-- Load external CSS styles -->
+        <link rel="stylesheet" href="styles.css">
+
+    </head>
+
+    <body style="background-color: rgb(53, 53, 53);">
+
+        <!-- Popover for displaying images in a larger view -->
+        <div id="popover" popover style="width:100%; height:100%; background-color: rgba(0, 0, 0, 0.5);">
+            <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                <img id="popover-image" alt="Larger view of the clicked on image, click again to close" style="max-width: 90%; max-height: 90%; cursor:default;">
+            </div>
+        </div>
+        
+
+        <section style="background-color: rgb(170, 138, 93); width: 100%; padding-top: 25px; padding-bottom: 25px; margin: 0;">
+        <img src="images/gate-logo.jpg" alt="Gate logo" title="Gate logo" style="display: block; margin-left: auto; margin-right: auto; width:192px; image-rendering: pixelated; cursor:default;">
+        </section>
+
+        <section style="padding-top: 20px; padding-bottom: 20px; text-align: center;">
+            <!-- Left Button -->
+            <button class="button button1" type="button" onclick="LeftArrow()"><b><</b></button>
+            
+            <img id="screenshots" src="images/screenshot-1.jpg" alt="Screenshot of the game" title="Screenshot 1" style="display: inline-block; width:70%; vertical-align: middle; border-radius: 10px;">
+            
+            <!-- Right Button -->
+            <button class="button button2" type="button" onclick="RightArrow()"><b>></b></button>
+            <noscript>
+                <p style="color: red;">JavaScript is disabled in your browser. Enable to restore slideshow functionality.</p>
+            </noscript>
+        </section>
+
+
+        <h2> GENERAL INFO </h2>
+        <p>
+            <em>Gate</em> is a short 3D platformer, created during a 48 hour game jam at <em>Bjerkely Folkehøyskole</em>.
+            The goal of the game is to collect 3 gems, and then exit through the tituar "gate".
+            The game was created by 3 people, with myself resposible for the game code and music, while the other 2 made the 3D models and sound effects.
+        </p>
+        
+        <h2> MAIN CHARACTER </h2>
+        <img id="main-character" src="images/main-character.jpg" alt="Low poly gnome" title="Low poly gnome" 
+        style="display: block; margin-left: auto; margin-right: auto; width:70%; border-radius: 10px;">
+        <p>
+            The main character is a forest gnome, however a <a href="./spray_can.html" style="color:lightskyblue;">different model</a> was used up until 30 minutes before the deadline. <br>
+        </p>
+
+        <h2> TECHNICAL DETAILS </h2>
+        <p>
+            The game was made using Unity and C#, with models created in Blender
+        </p>
+
+        <br>
+
+        <!-- YouTube video section -->
+        <section style="background-color: aqua; text-align:right; max-width: 680px; display: block; margin-left: auto; margin-right: auto; padding-bottom: 20px; padding-top: 1px;">
+            <p style="color:black; margin-right: 20px;"> The game was featured on the <em>Bjerkely Folkehøyskole</em> YouTube channel! <br>
+            <a href="https://www.youtube.com/watch?v=dzZGCK8nY5s" target="_blank"> (Link to YouTube if player is broken)</a></p>
+
+            <!-- The embedded youtube player only works when the page is hosted on a server -->
+            <iframe width="640" height="360" style="display: block; margin-left: auto; margin-right: auto; border: 2px solid #323232;" referrerpolicy="strict-origin-when-cross-origin" 
+            src="https://www.youtube.com/embed/dzZGCK8nY5s">
+            </iframe>
+        </section>
+
+
+        <section style="background-color: rgb(25, 25, 25);padding-bottom:1px;">
+        <h4> Contact info </h4>
+        <p style="margin-left: 10px; margin-bottom: 10px;"> Bernt Lund Johnsen <br>
+        <a href="mailto:bernt.johnsen@funkweb.org" style="color:lightskyblue;">bernt.johnsen@funkweb.org </a>  </p>
+        </section>
+
+        <script>
+            //Slideshow functionality start
+            let currentImage=1;
+            let imageAmount=3;
+
+            function LeftArrow() {
+                currentImage--;
+                if (currentImage < 1) {
+                    currentImage = imageAmount;
+                }
+                UpdateImage();
+            }
+            
+            function RightArrow() {
+                currentImage++;
+                if (currentImage > imageAmount) {
+                    currentImage = 1;
+                }
+                UpdateImage();
+            }
+
+            function UpdateImage() {
+                let imageElement = document.getElementById("screenshots");
+                imageElement.src = "images/screenshot-" + currentImage + ".jpg";
+                imageElement.title = "Screenshot " + currentImage;
+            }
+            //slideshow functionality end
+
+            //popover functionality start
+            var screenshotsClicked = document.getElementById("screenshots");
+            var mainCharacterClicked = document.getElementById("main-character");
+
+            screenshotsClicked.onclick = function() {
+                document.getElementById("popover-image").src = screenshotsClicked.src;
+                popover.showPopover(document.getElementById("popover"));
+            };
+
+            mainCharacterClicked.onclick = function() {
+                document.getElementById("popover-image").src = mainCharacterClicked.src;
+                popover.showPopover(document.getElementById("popover"));
+            };
+
+            popover.onclick = function() {
+                popover.hidePopover();
+            };
+            //popover functionality end
+        </script>
+    </body>
+</html>
