@@ -29,3 +29,7 @@ p{
 body {
   font-family: Georgia, serif;
 }
+
+.clickable{
+    cursor: pointer;
+}

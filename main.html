@@ -53,9 +53,12 @@
             </div>
         </nav>
 
-        <!-- 
-        Image of me, and a short description
-        -->
+        <!-- Popover for displaying images in a larger view -->
+        <div id="popover" popover style="width:100%; height:100%; background-color: rgba(0, 0, 0, 0.5);">
+            <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                <img id="popover-image" alt="Larger view of the clicked on image, click again to close" style="max-width: 90%; max-height: 90%; cursor:default;">
+            </div>
+        </div>
 
         <div class="d-flex">
             <h1 id="title col-2">Title</h1>
@@ -68,9 +71,31 @@
             </div>
         </div>
 
+
+        <div class="text-center p-4">
+            <div class="row p-4">
+                <div class="col-4">
+                    <img class="clickable" onclick="imageClicked(this)" src="images/navbar-brand.jpg" height="200">
+                </div>
+                <div class="col-8">
+                    <img class="clickable" onclick="imageClicked(this)" src="images/navbar-brand.jpg" height="200">
+                </div>
+            </div>
+            <div class="row p-4">
+                <div class="col-8">
+                    <img class="clickable" onclick="imageClicked(this)" src="images/navbar-brand.jpg" height="200">
+                </div>
+                <div class="col-4">
+                    <img class="clickable" onclick="imageClicked(this)" src="images/navbar-brand.jpg" height="200">
+                </div>
+            </div>
+        </div>
+
+
         <p>test</p>
 
-        <footer class="bg-dark-subtle p-2 fixed-bottom">
+
+        <footer class="bg-dark-subtle p-2">
             <h4> Contact info </h4>
             <address>
                 <p style="margin-left: 10px; margin-bottom: -15px;"> Bernt Lund Johnsen <br>
@@ -79,6 +104,15 @@
         </footer>
 
         <script>
+            //popover functionality
+            function imageClicked(a) {
+                document.getElementById("popover-image").src = a.src;
+                popover.showPopover(document.getElementById("popover"));
+            };
+            popover.onclick = function() {
+                popover.hidePopover();
+            };
+
             var sideCard = document.getElementById("sideCard");
 
             function MoveCard(){
