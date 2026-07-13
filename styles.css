@@ -9,3 +9,11 @@
 .btn{
     padding:0;
 }
+
+.card-transition{
+    transition: margin-left 0.9s ease;
+}
+
+h1{
+    padding: 10px
+}

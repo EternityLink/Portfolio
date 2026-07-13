@@ -35,7 +35,7 @@
                         <a class="nav-link" href="#">About</a>
                     </li>
                 </ul>
-            
+                
                 <div class="navbar-nav row row-cols-sm-4 row-cols-2 g-0">
                     <div class="nav-item col">
                         <a class="nav-link" target="_blank" href="https://github.com/EternityLink"><img src="images/GitHub-logo.png" alt="GitHub" title="GitHub" width="32" height="32"></a>
@@ -56,13 +56,33 @@
         <!-- 
         Image of me, and a short description
         -->
-        <div class="card col-6 offset-11 p-3 text-bg-danger skew" style="margin-top:100px">
-            <div class="unskew row" style="padding-left: 20px;">
-                <button type="button" class="btn btn-danger col-1 p=0 m=0"><img src="images/3-lines-white.png" width="30"></button>
-                <p class="card-text col-3">test  test</p>
+
+        <div class="d-flex">
+            <h1 id="title col-2">Title</h1>
+            <div id="sideCard" class="card card-transition offset-11 p-3 text-bg-danger skew" style="width:50%;position:absolute;">
+                <div class="unskew d-flex">
+                    <button type="button" class="btn btn-danger p=0 m=0" style="width:40px" onclick="MoveCard()"><img src="images/3-lines-white.png" width="30"></button>
+                    <p class="card-text" style="padding-left: 10%;">test</p>
+                </div>
             </div>
         </div>
 
+        <p>test</p>
 
+        <script>
+            var sideCard = document.getElementById("sideCard");
+
+            function MoveCard(){
+                
+                if (sideCard.classList.contains("offset-11")){
+                    sideCard.classList.add("offset-7");
+                    sideCard.classList.remove("offset-11");
+                }
+                else{
+                    sideCard.classList.add("offset-11");
+                    sideCard.classList.remove("offset-7");
+                }
+            }
+        </script>
     </body>
 </html>
